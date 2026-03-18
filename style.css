@@ -1,3 +1,8 @@
+* {
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+
 input::placeholder {
     color: black;
 }
@@ -24,4 +29,93 @@ button{
     border: none;
     width: 107px;
     height: 31px;
+}
+
+/* стилизация шапки */
+#header {
+    display: flex;
+}
+#menu a {
+    color: #68686A;
+    text-decoration: none;
+}
+
+#menu a.active{
+    color: #61C15C;
+}
+
+#menu li :hover {
+    font-weight: bold;
+}
+
+#menu li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 25px;
+}
+
+#menu li:last-child {
+    margin-right: 0px;
+}
+
+/* блок обо мне */
+#about_me{
+
+    box-sizing: border-box;
+    margin-top: 119px;
+    margin-left: 132px;
+    margin-right: 97px;
+
+}
+#about_me h1{
+    font-weight: bold;
+    font-size: 52px ;
+    box-sizing: border-box;
+    margin-right: 799px;
+    margin-bottom: 35;
+}
+
+#about_me {
+    display: flex;
+    gap: 156px; 
+}
+
+#about_me p {
+    box-sizing: border-box;
+    margin-right: 825px;
+    color: #68686A;
+    font-size: 15px ;
+}
+
+#about_me a {
+    color: #61C15C;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* блок последние посты */
+#post1{
+    background-color:#FEF3EF ;
+    height: 408px;
+    box-sizing: border-box;
+    margin-top: 107px;
+    margin-bottom: 60px;
+    margin-left: 132px;
+    margin-right: 133px;
+
+}
+
+#post2{
+    background-color:#F4FBF4 ;
+    height: 408px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    margin-left: 132px;
+    margin-right: 133px;
+}
+
+.button_posts{
+    text-align: center;
+    
 }
