@@ -36,18 +36,47 @@ p{
 
 #header{
     display: flex;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 50px;
 }
-#header p{
+
+.logo{
     font-size: 30px;
     color: #1A1B20;
+    font-weight: bold;
 }
 #menu a{
     text-decoration: none;
     font-size: 18px;
+    color: #68686A;
 
 }
+
+#menu a.active{
+    color: #61C15C;
+}
+#menu li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 25px; 
+    transition: text-shadow 0.3s ease;
+}
+#menu li:hover {
+    text-shadow: 0 0 1px currentColor;
+}
+/* 
+#menu::before{
+    content: "BLOG";
+    font-size: 18px;
+    color: #68686A;
+    font-weight: bold;
+
+    
+    
+} */
+
 
 #about_me{
     display: flex;
@@ -153,25 +182,7 @@ p{
     
 }
 
-#menu a {
-    color: #68686A;
-    text-decoration: none;
-}
-#menu a.active{
-    color: #61C15C;
-}
-#menu li {
-    list-style-type: none;
-    display: inline-block;
-    margin-right: 25px;
-}
-#menu li :hover {
-    font-weight: bold;
-}
-#header{
-    display: flex;
-    justify-content: flex-end;
-}
+
 
 /* #header p{
     display: inline-block;
@@ -341,18 +352,30 @@ p{
     gap: 20px;
     align-items: center;
     background-color: #FAFAFA;
+    margin-bottom: 60px;
 }
 .posts_card .card_item{
-    padding: 15px;
     display: flex;
     flex-direction: column; 
+    margin-bottom: 60px;
     
 }
 .posts_card .card_item  img{
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
     border-radius: 5px;
+    
+    display: flex;
+    flex-direction: column;
+}
+.posts_card .card_item .card_text {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.posts_card .card_item .card_text p:last-child {
+    margin-top: auto;
 }
 .first_card img{
     width: 100%;
@@ -363,6 +386,39 @@ p{
     display: flex;
     flex-direction: column;
     justify-content: center;}
+
+.card_text h4{
+    margin-top: 8px;
+    margin-bottom: 21px;
+}
+
+@media (max-width: 800px) {
+    .posts_card {
+        grid-template-columns: 1fr;
+    }
+
+    .posts_card .first_card {
+        grid-template-columns: 1fr;
+    }
+}
+
+.button_next {
+    display: flex;
+    justify-content: center; 
+    margin-top: 64px;
+    margin-bottom: 67px;
+    align-items: center;
+}
+
+.button_next button {
+    width: 200px;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid #75BB7C; 
+    color: #75BB7C;
+    border-radius: 5px;
+    font-size: 18px;
+}
 
 /* 
 input::placeholder {
