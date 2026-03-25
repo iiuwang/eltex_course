@@ -6,137 +6,147 @@
     <link rel="stylesheet" href="style.css">
     <title>Блог</title>
     <link rel="icon" href = "assets/favicon.png" type="image/x-icon">
+    <!--<link rel="preload" href="assets/fonts_inter/inter-norma-cirillic.woff2" as="font" type="font/woff2">-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     
     <!-- шапка -->
     <header>
-        <nav id="header">
-            <div class="logo">BLOG</div>
-            <ul id="menu">
-                <li><a href="index.html" >Главная</a></li>
-                <li><a href="blog.html" class="active" target="_blank">Блог</a></li>
-                <li><a href="#footer">Контакты</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav class="header">
+                <div class="logo">BLOG</div>
+                <ul class="menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html" class="active">Блог</a></li>
+                    <li><a href="#footer">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section id="about_blog">
-            <div>
-                <h1>Мой блог</h1>
-                <p>Здесь вы найдёте статьи о программировании, дизайне, адаптивной верстке и практических лайфхаках для создания современных сайтов и приложений.
-                </p>
-            </div>
-            <img src="assets/1.png" />
-        </section>
-
-        <section class="posts_card">
-            <!-- блок статей -->
-            <article class="first_card">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                    <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-                    <p>Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
+        <div class="container">
+            <section class="about_blog">
+                <div>
+                    <h1>Мой блог</h1>
+                    <p>Здесь вы найдёте статьи о программировании, дизайне, адаптивной верстке и практических лайфхаках для создания современных сайтов и приложений.
+                    </p>
                 </div>
+                <img src="assets/1.png" />
+            </section>
+
+            <section class="posts_card">
+                <!-- блок статей -->
+                <article class="first_card">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h3>Как создать адаптивный дизайн за 30 минут</h3>
+                        <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
+                        <p>Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
+                    </div>
+                    
+                </article>
                 
-            </article>
-            
-            <article class="card_item">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h4>Основы адаптивного веб-дизайна</h4>
-                    
-                    <p>Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
-                </div>
-            </article>
-            
-            <article class="card_item">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h4>Первые шаги в HTML: создаём свою страни</h4>
-                    
-                    <p>Опубликовано: <time datetime="2026-03-16">16 марта 2026</time></p>
-                </div>
-            </article>
-            
-            <article class="card_item">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h4>Как создать адаптивный дизайн за 30 минут</h4>
-                    <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
-                </div>
-            </article>
-            
-            <article class="card_item">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h4>Основы CSS: как оформить веб-страницу</h4>
-                    <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
-                </div>
-            </article>
+                <article class="card_item">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h4>Основы адаптивного веб-дизайна</h4>
+                        
+                        <p>Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
+                    </div>
+                </article>
+                
+                <article class="card_item">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h4>Первые шаги в HTML: создаём свою страни</h4>
+                        
+                        <p>Опубликовано: <time datetime="2026-03-16">16 марта 2026</time></p>
+                    </div>
+                </article>
+                
+                <article class="card_item">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h4>Как создать адаптивный дизайн за 30 минут</h4>
+                        <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
+                    </div>
+                </article>
+                
+                <article class="card_item">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h4>Основы CSS: как оформить веб-страницу</h4>
+                        <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
+                    </div>
+                </article>
 
-            
-            <article class="card_item">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h4>Как создать адаптивный дизайн за 30 минут</h4>
-                    
-                    <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
-                </div> 
-            </article>
-            
-            <article class="card_item">
-                <img src="assets/selection.png" alt="Обложка" />
-                <div class="card_text">
-                    <h4>Как создать адаптивный дизайн за 30 минут</h4>
-                    
-                    <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
-                </div>
-            </article>
-        </section>
-        <div class="button_next">
-            <button type="button">Далее</button>
+                
+                <article class="card_item">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h4>Как создать адаптивный дизайн за 30 минут</h4>
+                        
+                        <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
+                    </div> 
+                </article>
+                
+                <article class="card_item">
+                    <img src="assets/selection.png" alt="Обложка" />
+                    <div class="card_text">
+                        <h4>Как создать адаптивный дизайн за 30 минут</h4>
+                        
+                        <p>Опубликовано: <time datetime="2026-03-11">11 марта 2026</time></p>
+                    </div>
+                </article>
+            </section>
+            <div class="button_next">
+                <button type="button">Далее</button>
+            </div>
+            <!-- <section>
+            блок создать статью
+                <br>
+                <h1>Создать статью</h1>
+                <div><input type="text" placeholder="Заголовок" /></div>
+                <br><div><textarea id="article" placeholder="Текст статьи"></textarea> </div>
+                <br><button type="submit">Добавить</button> 
+            </section> -->
         </div>
-        <!-- <section>
-        блок создать статью
-            <br>
-            <h1>Создать статью</h1>
-            <div><input type="text" placeholder="Заголовок" /></div>
-            <br><div><textarea id="article" placeholder="Текст статьи"></textarea> </div>
-            <br><button type="submit">Добавить</button> 
-        </section> -->
     </main>
     
     <!-- футер -->
-    <footer id="footer">
-        <section>
-            <h1>Контакты</h1>
-            <p>Email: <a href="mailto:afilippova287@gmail.com">afilippova287@gmail.com</a></p>
-            <p>Телефон: <a href="tel:89963456789">89963456789</a></p>
-            <p id="links">Instagram | Twitter | Linkedln | GitHub</p>
-            <div id="footer_bottom">
-                © 2026 Brand, Inc
-            </div>
-        </section>
+    <footer class="footer">
+        <div class="container">
+            <section>
+                <h1>Контакты</h1>
+                <p>Email: <a href="mailto:afilippova287@gmail.com">afilippova287@gmail.com</a></p>
+                <p>Телефон: <a href="tel:89963456789">89963456789</a></p>
+                <p class="links">Instagram | Twitter | Linkedln | GitHub</p>
+                <div class="footer_bottom">
+                    © 2026 Brand, Inc
+                </div>
+            </section>
 
-        <section>
-        <!-- блок смс -->
-            <div>
-                <label id="email">Email:</label>
-                <input type="text" placeholder="Заголовок" />
-            </div>
-            <div>
-                <label id="sms">Введите сообщение:</label>
-                <textarea id="article" placeholder="Текст статьи"></textarea> 
+            <section>
+            <!-- блок смс -->
+                <div>
+                    <label class="email">Email:</label>
+                    <input type="text" placeholder="Заголовок" />
+                </div>
+                <div>
+                    <label class="sms">Введите сообщение:</label>
+                    <textarea class="article" placeholder="Текст статьи"></textarea> 
+                    
+                </div>
+                <div>
+                    <button type="submit">Добавить</button>
+                </div>
                 
-            </div>
-            <div>
-                <button type="submit">Добавить</button>
-            </div>
-             
-        </section>
+            </section>
+        </div>
     </footer>
 
 </body>
