@@ -390,7 +390,7 @@ p{
     color: var(--light_text); 
 }
 .footer textarea::placeholder {
-    color: var(--light_text)F;
+    color: var(--light_text);
 }
 .footer label {
     color: var(--light_text);
@@ -415,6 +415,7 @@ p{
     margin-top:24px;
     width: 148px;
     height: 85;
+    border: none;
 }
 .footer_bottom{
     color: var(--light_text);
@@ -505,4 +506,126 @@ p{
     border-radius: 5px;
     font-size: 18px;
 }
+
+.add_post {
+    /* display: none; */
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+#add_post.active {
+    opacity: 1;
+    max-height: 500px; 
+}
+
+.create_post{
+    display: flex;
+    flex-direction: column;
+}
+.name_post,.text_post{
+    width: 100%;
+    color: #A3A6AD;
+    border-radius: 5px;
+    resize: none;
+    font-size: 18px;
+    font-weight: 200;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+.name_post{
+    height: 60px;
+    margin-bottom: 20px;
+}
+.text_post{
+    height: 123px;
+}
+.create_post label{
+    color: var(--text);
+}
+.add_button{
+    background-color: var(--green);
+    color: var(--light_text);
+    border: none;
+    border-radius: 5px;
+    width: 276px;
+    height: 51px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.del_button{
+    background-color: transparent;
+    color: var(--green);
+    border: 1px solid var(--green);
+    border-radius: 5px;
+    width: 276px;
+    height: 51px;
+    font-size: 18px;
+    margin-bottom: 56px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.admin_tools{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    height: 113px;
+    width: 48px;
+    position: absolute;
+    right: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    justify-content: space-evenly;
+    top: 1750px;
+
+}
+.admin_tools img{
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+.icon_button{
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+/* диалоговое окно*/
+
+dialog{
+    border-radius: 10px;
+    width: 516px;
+    border: 1px solid var(--textMenu);
+}
+dialog h3{
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+.stats_blocks{
+    display: flex;
+    gap:26px;
+}
+.total_posts, .total_comments{
+    box-shadow: 5px 5px 5px var(--textMenu);
+    border-radius: 10px;
+    flex: 1;
+    padding-top: 12px;
+    padding-left: 16px;
+    padding-bottom: 12px;
+    padding-right: 16px;
+}
+
+.total_posts h4, .total_comments h4, .total_posts p, .total_comments p{
+    color: var(--text);
+    margin: 0px;
+}
+.total_comments p, .total_posts p{
+    font-size: 40px;
+    font-weight: bold;
+}
+
 
