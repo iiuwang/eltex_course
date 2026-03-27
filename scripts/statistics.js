@@ -1,8 +1,15 @@
+//всего статей
+function PostCount(){
+    const posts=document.querySelectorAll('.posts_card article');
+    const countElement=document.getElementById('post_count');
+    countElement.textContent = posts.length;
+}
 // диалоговое
 const openButton=document.getElementById('openModalButton');
 const dialogWindow=document.getElementById('statistics_dialog');
 
 openButton.addEventListener('click',()=>{
+    PostCount();
     dialogWindow.showModal();
 });
 
@@ -22,6 +29,7 @@ showAddButton.addEventListener('click', () => {
 //cкрыть форму добавления поста
 const hideAddButton=document.getElementById('del_button');
 hideAddButton.addEventListener('click', () => {
+    document.querySelector('.create_post').reset();
     document.getElementById('add_post').classList.remove('active');
 });
 //hideAddButton.addEventListener('click',()=>{
@@ -33,7 +41,6 @@ function AddPost(title,date){
     const template = document.getElementById('post_template');
     const container = document.querySelector('.posts_card');
     
-
     const clone = template.content.cloneNode(true);
     clone.querySelector('.title_post').textContent = title;
     clone.querySelector('.date_post').textContent = "Опубликовано: " + date;
@@ -44,5 +51,11 @@ function AddPost(title,date){
 const addPostButton=document.getElementById('add_button');
 addPostButton.addEventListener('click',(e)=>{
     e.preventDefault();
-    AddPost("Тестирование фукнции", "27 марта 2026");
+
+    const title=document.getElementById('name_post').value;
+    const date=new Date().toLocaleDateString('ru-RU');
+
+    AddPost(title, date);
+    document.querySelector('.create_post').reset();
+    document.getElementById('add_post').classList.remove('active');
 });
