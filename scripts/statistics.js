@@ -59,3 +59,15 @@ addPostButton.addEventListener('click',(e)=>{
     document.querySelector('.create_post').reset();
     document.getElementById('add_post').classList.remove('active');
 });
+
+//удаление статьи
+const postsContainer = document.querySelector('.posts_card');
+
+postsContainer.addEventListener('click', (e) => {
+    const deleteButton = e.target.closest('.hover_delete'); 
+    if (deleteButton) {
+        const card = deleteButton.closest('.card_item'); 
+        if(card) card.remove();
+        PostCount();
+    }
+});
