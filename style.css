@@ -432,7 +432,8 @@ p{
     grid-gap: 20px; 
 }
 
-.posts_card .first_card {
+
+/* .posts_card .first_card {
     grid-column: 1 / -1; 
     display: grid;
     grid-template-columns: 1fr 1fr; 
@@ -440,7 +441,7 @@ p{
     align-items: center;
     background-color: var(--post_card);
     margin-bottom: 60px;
-}
+} */
 .card_item{
     position: relative;
 }
@@ -475,6 +476,18 @@ p{
     margin-bottom: 60px;
     
 }
+.card_item:first-child{
+    grid-column: 1 / -1; 
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px;
+    align-items: center;
+    background-color: var(--post_card);
+    margin-bottom: 60px;
+}
+.card_item:first-child {
+    position: relative;
+}
 .posts_card .card_item  img{
     width: 100%;
     height: 100%;
@@ -492,19 +505,43 @@ p{
 .posts_card .card_item .card_text p:last-child {
     margin-top: auto;
 }
-.first_card img{
+
+.card_item:first-child img{
     width: 100%;
     height: auto;
     object-fit: cover;
 }
-.first_card .card_text{
+/* .first_card img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+} */
+.card_item:first-child .card_text{
     display: flex;
     flex-direction: column;
-    justify-content: center;}
+    justify-content: center;
+}
+
+/* .first_card .card_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;} */
+
+.card_item:not(:first-child) .blog-article-description {
+    display: none;
+}
 
 .card_text h4{
     margin-top: 8px;
     margin-bottom: 21px;
+}
+.card_item:first-child .blog-article-title {
+    font-size: 32px;
+    margin-top: 8px;
+    margin-bottom: 21px;
+    font-weight: bold;
+    color: var(--text);
+  /* margin-bottom: 16px; */
 }
 
 @media (max-width: 800px) {
@@ -512,7 +549,7 @@ p{
         grid-template-columns: 1fr;
     }
 
-    .posts_card .first_card {
+    .card_item:first-child {
         grid-template-columns: 1fr;
     }
 }
@@ -566,6 +603,8 @@ p{
 .name_post{
     height: 60px;
     margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-width:1px;
 }
 .text_post{
     height: 123px;
