@@ -609,6 +609,16 @@ p{
 .text_post{
     height: 123px;
 }
+
+.empty{
+    display: none;
+    justify-content: space-around;
+    height: 300px;
+    align-items: center;
+}
+.empty p{
+    color: var(--textMenu);
+}
 .create_post label{
     color: var(--text);
 }
@@ -642,12 +652,13 @@ p{
     flex-direction: column;
     height: 113px;
     width: 48px;
-    position: absolute;
+    position: fixed;
     right: 0;
+    bottom: 300px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     justify-content: space-evenly;
-    top: 1750px;
+    
 
 }
 .admin_tools img{
