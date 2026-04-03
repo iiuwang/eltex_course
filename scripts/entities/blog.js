@@ -48,14 +48,51 @@ export class Blog {
         }
 
         const countElement = document.getElementById('post_count');
-        
+
         if (countElement) {
             countElement.textContent = this.list.length;
         }
     }
 }
 
+function showLoader() {
+    const loader = document.querySelector('.loader');
+    loader.classList.add('show');
+}
+
+function hideLoader() {
+    const loader = document.querySelector('.loader');
+    loader.classList.remove('show');
+}
+
+function loadPosts(blog) {
+    return new Promise(resolve => {
+        showLoader();
+
+        setTimeout(() => {
+            const savedPosts = blog.storage.getPosts();
+            if (savedPosts && Array.isArray(savedPosts)) {
+                savedPosts.forEach(data => {
+                    const post = new Post(data.title, data.text);
+                    post.id = data.id;
+                    post.date = data.date;
+                    blog.add(post, false); 
+                });
+            }
+            hideLoader();
+            resolve();
+        }, 1000); 
+    });
+}
+
+
+
 const blog = new Blog(new LocalStoragePost());
+
+loadPosts(blog).then(() => {
+    blog.updateUI();
+});
+
 const addSection = document.getElementById('add_post');
 const showAddButton = document.getElementById('showAddButton');
 const hideAddButton = document.getElementById('del_button');
