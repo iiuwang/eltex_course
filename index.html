@@ -15,126 +15,152 @@
 <body>
     <!-- шапка -->
     <header>
-        <nav id="header">
-            <!-- <p>Страница</p> -->
-            <ul id="menu">
-                <li><a href="index.html" class="active" >Главная</a></li>
-                <li><a href="blog.html" target="_blank">Блог</a></li>
-                <li><a href="#footer">Контакты</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav class="header">
+                <div class="logo">BLOG</div>
+                <ul class="menu">
+                    <li><a href="index.html" class="active" >Главная</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                    <li><a href="#footer">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
-        <section id="about_me">
-        <!-- блок обо мне -->
-            <div>
-                <h1>Добро пожаловать! Меня зовут Алена</h1>
-                <p>Я изучаю веб-программирование и постепенно осваиваю создание интерактивных сайтов и приложений.
-                    В этом блоге я делюсь своими учебными проектами, практическими наработками и интересными материалами, которые помогают лучше понимать мир веб-разработки.
-                </p>
-                <a href="#more_about">Больше обо мне ></a>
-            </div>
-            <img src="assets/pic1.jpg" alt="Моё фото" />
-        </section>
+        <div class="container">
+            <section class="about_me">
+            <!-- блок обо мне -->
+                <div>
+                    <h1>Добро пожаловать! Меня зовут Алена</h1>
+                    <p>Я изучаю веб-программирование и постепенно осваиваю создание интерактивных сайтов и приложений.
+                        В этом блоге я делюсь своими учебными проектами, практическими наработками и интересными материалами, которые помогают лучше понимать мир веб-разработки.
+                    </p>
+                    <a href="#more_about">Больше обо мне ></a>
+                </div>
+                <img src="assets/pic1.jpg" alt="Моё фото" />
+            </section>
 
-        <!-- блок последние статьи -->
-        <section>
-            <article id="post1">
-                <p id="date1">Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
-                <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                <p>В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-            </article>
+            <!-- блок последние статьи -->
+            <section class="posts">
+                <div class="post_item">
+                    <article class="post1">
+                        <p class="date">Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
+                        <h3>Как создать адаптивный дизайн за 30 минут</h3>
+                        <p class="post_descr">В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
+                    </article>
+                    <div><img src="assets/selection.png" alt="Обложка" /></div>
+                </div>
+                <div class="post_item">
+                    <article class="post2">
+                        <p class="date">Опубликовано:  <time datetime="2026-02-15">15 февраля 2026</time></p>
+                        <h3>Основы адаптивного веб-дизайна</h3>
+                        <p class="post_descr">Рассказываю о базовых принципах адаптивной верстки и делюсь простыми примерами, которые помогают сайту корректно отображаться на любом экране.</p>
+                    </article>
+                    <div><img src="assets/selection.png" alt="Обложка" /></div>
+                </div>
 
-            <article id="post2">
-                <p id="date2">Опубликовано:  <time datetime="2026-02-15">15 февраля 2026</time></p>
-                <h3>Основы адаптивного веб-дизайна</h3>
-                <p>Рассказываю о базовых принципах адаптивной верстки и делюсь простыми примерами, которые помогают сайту корректно отображаться на любом экране.</p>
-            </article>
-
-            <div class="button_posts">
-                <a href="blog.html" target="_blank">Посмотреть все статьи</a>
-            </div>
+                <div class="button_posts">
+                    <a href="blog.html" target="_blank">Посмотреть все статьи</a>
+                </div>
+                
+            </section>
             
-        </section>
-        
-        <!-- блок навыки -->
-        <section id="skills">
-            <h1>Навыки:</h1>
-            <ul>
-                <li>HTML5</li>
-                <li>Python</li>
-                <li>JavaScript</li>
-                <li>CSS</li>
-                <li>R</li>
-                <li>C++</li>
-            </ul>
-        </section>
-
-        <section id="more_about">
-            <h1>Моя карьера</h1>
-            <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolore quisquam assumenda asperiores.</p>
-            <article>
-                <p class="company">ООО "CORTEL" - (2025 - по настоящее время)</p>
-                <p class="job_name" >Оператор технической поддержки</p>
-                <p class="job_description">Круглосуточный мониторинг IT-инфраструктуры и облачных сервисов, оперативная обработка и первичная диагностика инцидентов, взаимодействие с техническими специалистами и сопровождение инцидентов до их полного устранения</p>
-            </article>
-
-            <article>
-                <p class="company">ООО "Алгоритмика" (2024 - 2025)</p>
-                <p class="job_name">Преподаватель</p>
-                <p class="job_description">Обучение школьников языку программирования Python и Scratch</p>
-            </article> 
-            <!-- блок образование -->
-            <!-- <article>
-                <h3>Образование:</h3>
-                <article>
-                    <h4>Новосибирский государственный технический университет (2021 - 2025)</h4>
-                    <p>Бакалавриат по специальности "Информатика и вычислительная техника"</p>
-                    <p>Выпускная работа: "Разработка приложения для школы кроя и шитья "SHKAFstudio""</p>
-                </article>
-
-                <article>
-                    <h4>Новосибирский государственный технический университет (2025 - по настоящее время)</h4>
-                    <p>Магистратура по специальности "Информатика и вычислительная техника"</p>
-                </article>
-            </article> -->
-
-            <!-- блок курсы -->
-            <!-- <article>
-                <h3>Курсы и сертификации:</h3>
-                <ul>
-                    <li>Проектирование информационных систем - НГТУ (2025)</li>
-                    <li>Технологии виртуализации - НГТУ (2025)</li>
+            <!-- блок навыки -->
+            <section class="skills">
+                <h1>Навыки:</h1>
+                <ul class="skill_item">
+                    <li>HTML5</li>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>CSS</li>
+                    <li>R</li>
+                    <li>C++</li>
                 </ul>
-            </article> -->
+            </section>
 
-            <!-- блок достижения -->
-            <!-- <article>
-                <h3>Достижения:</h3>
-                <ul>
-                    <li>Достижение 1</li>
-                    <li>Достижение 2</li>
-                    <li>Достижение 3</li>
-                    <li>Достижение 4</li>
-                </ul>
-            </article> -->
-        </section>
-        <section id="hobby">
-            <h1>Мои хобби</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolore quisquam assumenda asperiores.</p>
-            <img src="assets/selection.png" alt="Фото хобби" />
-            <img src="assets/selection.png" alt="Фото хобби" />
-            <img src="assets/selection.png" alt="Фото хобби" />
-            <img src="assets/selection.png" alt="Фото хобби" />
-        </section>
+            <section class="more_about" id="more_about">
+                <article>
+                    <h1>Моя карьера</h1>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolore quisquam assumenda asperiores.</p>
+                </article>
+                <div id="right_col">
+                    <article class="works">
+                        <div class="work_img"><img src="assets/work_icon1.png" alt="Иконка" /></div>
+                        <div class="work_text">
+                            <p class="company">ООО "CORTEL" - (2025 - по настоящее время)</p>
+                            <p class="job_name" >Оператор технической поддержки</p>
+                            <p class="job_description">Круглосуточный мониторинг IT-инфраструктуры и облачных сервисов, оперативная обработка и первичная диагностика инцидентов, взаимодействие с техническими специалистами и сопровождение инцидентов до их полного устранения</p>
+                        </div>
+                    </article>
+                    <article class="works">
+                        <div class="work_img"><img src="assets/work_icon2.png" alt="Иконка" /></div>
+                        <div class="work_text">
+                            <p class="company">ООО "Алгоритмика" (2024 - 2025)</p>
+                            <p class="job_name">Преподаватель</p>
+                            <p class="job_description">Обучение школьников языку программирования Python и Scratch</p>
+                        </div>
+                    </article> 
+                </div>
+            </section>
+            <section class="hobby">
+                <div class="hobby_text">
+                    <h1>Мои хобби</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolore quisquam assumenda asperiores.</p>
+                </div>
+                <div class="hobby_pics">
+                    <div class = "pic_item">
+                        <img  src="assets/hobby1.png" alt="Фото хобби" />
+                        <div class="overlay">
+                            <h4>Hobby project name</h4>
+                            <p>
+                                Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure labore est ea.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "pic_item">
+                        <img  src="assets/hobby2.png" alt="Фото хобби" />
+                    </div>
+                    <div class = "pic_item">
+                        <img class = "pic_item" src="assets/selection.png" alt="Фото хобби" />
+                    </div>
+                    <div class = "pic_item">
+                        <img class = "pic_item" src="assets/selection.png" alt="Фото хобби" />
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
     </main>
     <!-- футер -->
-    <footer id="footer">
+    <footer class="footer" id="footer">
+        <div class="container">
+            <section>
+                <h1>Контакты</h1>
+                <p>Email: <a href="mailto:afilippova287@gmail.com">afilippova287@gmail.com</a></p>
+                <p>Телефон: <a href="tel:89963456789">89963456789</a></p>
+                <p class="links">Instagram | Twitter | Linkedln | GitHub</p>
+                <div class="footer_bottom">
+                    © 2026 Brand, Inc
+                </div>
+            </section>
 
-        <h1>Контакты</h1>
-        <p>Email: <a href="mailto:afilippova287@gmail.com">afilippova287@gmail.com</a></p>
-        <p>Телефон: <a href="tel:89963456789">89963456789</a></p>
-        <p>Instagram | Twitter | Linkedln | GitHub</p>
+            <section>
+            <!-- блок смс -->
+                <div>
+                    <label>Email:</label>
+                    <input type="text" placeholder="Email..." />
+                </div>
+                <div>
+                    <label>Введите сообщение:</label>
+                    <textarea class="article" placeholder="Введите сообщение..."></textarea> 
+                    
+                </div>
+                <div>
+                    <button type="submit">Добавить</button>
+                </div>
+                
+            </section>
+        </div>
     </footer>
 </body>
 </html>
