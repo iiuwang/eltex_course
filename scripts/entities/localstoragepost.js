@@ -5,21 +5,23 @@ export class LocalStoragePost {
         const posts = localStorage.getItem(this.storageKey);
         if (posts) {
             return JSON.parse(posts);
-        } 
-        else {
+        } else {
             return [];
         }
     }
 
-    savePost(post) {
-        const posts = this.getPosts();
-        posts.push(post);
-        localStorage.setItem(this.storageKey, JSON.stringify(posts));
-    }
+    // savePost(post) {
+    //     const posts = this.getPosts();
+    //     posts.push(post);
+    //     localStorage.setItem(this.storageKey, JSON.stringify(posts));
+    // }
 
-    deletePost(id) {
-        let posts = this.getPosts();
-        posts = posts.filter(p => p.id !== id);
-        localStorage.setItem(this.storageKey, JSON.stringify(posts));
+    // deletePost(id) {
+    //     let posts = this.getPosts();
+    //     posts = posts.filter(p => p.id !== id);
+    //     localStorage.setItem(this.storageKey, JSON.stringify(posts));
+    // }
+    saveState(postList) {
+        localStorage.setItem(this.storageKey, JSON.stringify(postList));
     }
 }

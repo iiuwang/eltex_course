@@ -37,26 +37,30 @@
                 </div>
                 <img src="assets/1.png" />
             </section>
-            <div class="empty" id="empty">
-                    <p>Нет статей</p>
+            <div class="post_container">
+                <div class="loader" id="loader"></div>
+            
+                <div class="empty" id="empty">
+                        <p>Нет статей</p>
+                </div>
+                <section class="posts_card">
+                    <!-- Шаблон для постов -->
+                    <template id="post_template">
+                        <article class="card_item">
+                            <img src="assets/selection.png" alt="Обложка" />
+                            <button class="hover_delete">
+                                <img src="assets/delete.png" alt="Иконка удаления" />
+                            </button> 
+                            <div class="card_text">
+                                <h4 class="blog-article-title"></h4>
+                                <p class="blog-article-description"></p>
+                                <p class="date_post"></p>
+                            </div> 
+                        </article>
+                    </template>
+                    
+                </section>
             </div>
-            <section class="posts_card">
-                <!-- Шаблон для постов -->
-                <template id="post_template">
-                    <article class="card_item">
-                        <img src="assets/selection.png" alt="Обложка" />
-                        <button class="hover_delete">
-                            <img src="assets/delete.png" alt="Иконка удаления" />
-                        </button> 
-                        <div class="card_text">
-                            <h4 class="blog-article-title"></h4>
-                            <p class="blog-article-description"></p>
-                            <p class="date_post"></p>
-                        </div> 
-                    </article>
-                </template>
-                 
-            </section>
             <div class="button_next">
                 <button type="button">Далее</button>
             </div>
@@ -112,7 +116,7 @@
                 </div>
         </dialog>
         <!-- работа со статистикой -->
-        <script src="scripts/statistics.js"></script>
+        <script  type="module" src="scripts/statistics.js"></script>
         <script type="module" src="scripts/entities/blog.js"></script>
     </main>
     
