@@ -120,7 +120,6 @@ form.addEventListener('submit', e => {
         .finally(() => {
             blog.hideLoader();
 
-            // Включаем форму и кнопку обратно
             submitButton.disabled = false;
             Array.from(form.elements).forEach(el => el.disabled = false);
 
