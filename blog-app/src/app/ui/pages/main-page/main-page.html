@@ -14,25 +14,18 @@
 
             <!-- блок последние статьи -->
             <section class="posts">
-                <div class="post_item">
-                    <article class="post1">
-                        <p class="date">Опубликовано: <time datetime="2026-03-05">5 марта 2026</time></p>
-                        <h3>Как создать адаптивный дизайн за 30 минут</h3>
-                        <p class="post_descr">В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.</p>
-                    </article>
-                    <div><img src="selection.png" alt="Обложка" /></div>
-                </div>
-                <div class="post_item">
-                    <article class="post2">
-                        <p class="date">Опубликовано:  <time datetime="2026-02-15">15 февраля 2026</time></p>
-                        <h3>Основы адаптивного веб-дизайна</h3>
-                        <p class="post_descr">Рассказываю о базовых принципах адаптивной верстки и делюсь простыми примерами, которые помогают сайту корректно отображаться на любом экране.</p>
-                    </article>
-                    <div><img src="selection.png" alt="Обложка" /></div>
-                </div>
+                    @for (post of posts; track post.date; let i=$index){
+                        <app-main-post
+                            [post]="post"
+                            [index]="i">
+                        </app-main-post>
+                        
+                    }
+
+                
 
                 <div class="button_posts">
-                    <a href="blog.html" target="_blank">Посмотреть все статьи</a>
+                    <a routerLink="/blog-page">Посмотреть все статьи</a>
                 </div>
                 
             </section>

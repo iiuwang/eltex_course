@@ -3,9 +3,14 @@
         <nav class="header">
             <div class="logo">BLOG</div>
             <ul class="menu">
-                <li><a href="index.html" class="active" >Главная</a></li>
-                <li><a href="blog.html">Блог</a></li>
-                <li><a href="#footer">Контакты</a></li>
+                <li><a routerLink="/" 
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    >Главная</a></li>
+                <li><a routerLink="/blog-page"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }">Блог</a></li>
+                <li><a (click)="toFooter()">Контакты</a></li>
             </ul>
         </nav>
     </div>

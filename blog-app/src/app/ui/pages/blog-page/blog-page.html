@@ -1,0 +1,96 @@
+
+<main>
+    <div class="container">
+        <section class="about_blog">
+            <div>
+                <h1>Мой блог</h1>
+                <p>Здесь вы найдёте статьи о программировании, дизайне, адаптивной верстке и практических лайфхаках для создания современных сайтов и приложений.
+                </p>
+            </div>
+            <img src="1.png" />
+        </section>
+        <div class="post_container">
+            <div class="loader" id="loader"></div>
+            <div class="empty" id="empty">
+                <p>Нет статей</p>
+            </div>
+            <section class="posts_card">
+                @for (post of posts; track post.title){
+                    <app-blog-post
+                      [title]="post.title"
+                      [description]="post.description"
+                      [date]="post.date"
+                      [image]="post.image"
+                      [index]="i"></app-blog-post>
+                }
+                <!-- Шаблон для постов
+                <template id="post_template">
+                    <article class="card_item">
+                        <img src="selection.png" alt="Обложка" />
+                        <button class="hover_delete">
+                            <img src="delete.png" alt="Иконка удаления" />
+                        </button> 
+                        <div class="card_text">
+                            <h4 class="blog-article-title"></h4>
+                            <p class="blog-article-description"></p>
+                            <p class="date_post"></p>
+                        </div> 
+                    </article>
+                </template> -->
+                    
+            </section>
+        </div>
+        <div class="button_next">
+            <button type="button">Далее</button>
+        </div>
+
+        <section class=add_post id="add_post">
+        <!-- блок создать статью -->
+            <h3>Добавить статью</h3>
+            <form class="create_post">
+                <div>
+                    <label for="name_post">Заголовок</label>
+                    <input id="name_post" class="name_post" name="name_post" type="text" placeholder="Заголовок статьи" required>
+                </div>
+                <div>
+                    <label for="text_post">Текст статьи</label>
+                    <textarea id="text_post" name="text_post" class=text_post placeholder="Текст статьи" required></textarea> 
+                        
+                </div>
+                <div>
+                    <button id="add_button" class="add_button" type="submit">Добавить</button>
+                    <button id="del_button" class="del_button" type="button">Отменить</button>
+                </div>
+            </form>
+                
+        </section>
+    </div>
+    
+    <div class="admin_tools"> 
+        <button id="showAddButton" class="icon_button">
+            <img title="Добавить статью" src="post_add.png" alt="Добавить" />
+        </button>
+        <button id="openModalButton" class="icon_button">
+            <img title="Статистика" src="statistics.png" alt="Статистика">
+        </button>
+
+    </div>
+
+        <!-- диалоговое окно -->
+    <dialog aria-label="statistics_dialog" id="statistics_dialog">
+            <h3>Статистика страницы</h3>
+            <div class="stats_blocks">
+                <div class="total_posts">
+                    <h4>Всего статей:</h4>
+                    <p id="post_count">0</p>
+                </div>
+                <div class="total_comments">
+                    <h4>Комментарии:</h4>
+                    <p>0</p>
+                </div>
+            </div>
+    </dialog>
+    <!-- работа со статистикой -->
+    <!-- <script  type="module" src="scripts/statistics.js"></script>
+    <script type="module" src="scripts/entities/blog.js"></script> -->
+</main>

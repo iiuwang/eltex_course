@@ -1,0 +1,11 @@
+<div class="post_item"
+    [class.even]="index % 2 === 0"
+    [class.odd]="index % 2 === 1">
+
+    <article class="post1">
+        <p class="date">Опубликовано: <time datetime="2026-03-05">{{ post.date }}</time></p>
+            <h3>{{ post.title }}</h3>
+        <p class="post_descr">{{ post.description }}</p>
+    </article>
+    <div><img [src]="post.image" alt="Обложка" /></div>
+</div>
