@@ -15,7 +15,7 @@
                 <p>Нет статей</p>
             </div>
             <section class="posts_card">
-                @for (post of posts; track post.title){
+                @for (post of posts; track post.title;let i = $index){
                     <app-blog-post
                       [title]="post.title"
                       [description]="post.description"
@@ -23,20 +23,7 @@
                       [image]="post.image"
                       [index]="i"></app-blog-post>
                 }
-                <!-- Шаблон для постов
-                <template id="post_template">
-                    <article class="card_item">
-                        <img src="selection.png" alt="Обложка" />
-                        <button class="hover_delete">
-                            <img src="delete.png" alt="Иконка удаления" />
-                        </button> 
-                        <div class="card_text">
-                            <h4 class="blog-article-title"></h4>
-                            <p class="blog-article-description"></p>
-                            <p class="date_post"></p>
-                        </div> 
-                    </article>
-                </template> -->
+                
                     
             </section>
         </div>
@@ -44,30 +31,15 @@
             <button type="button">Далее</button>
         </div>
 
-        <section class=add_post id="add_post">
-        <!-- блок создать статью -->
-            <h3>Добавить статью</h3>
-            <form class="create_post">
-                <div>
-                    <label for="name_post">Заголовок</label>
-                    <input id="name_post" class="name_post" name="name_post" type="text" placeholder="Заголовок статьи" required>
-                </div>
-                <div>
-                    <label for="text_post">Текст статьи</label>
-                    <textarea id="text_post" name="text_post" class=text_post placeholder="Текст статьи" required></textarea> 
-                        
-                </div>
-                <div>
-                    <button id="add_button" class="add_button" type="submit">Добавить</button>
-                    <button id="del_button" class="del_button" type="button">Отменить</button>
-                </div>
-            </form>
-                
-        </section>
+       <!-- блок создать статью -->
+        @if(addFormVisible){
+            <app-form-add-post></app-form-add-post>
+        }
+        
     </div>
     
     <div class="admin_tools"> 
-        <button id="showAddButton" class="icon_button">
+        <button (click)="switchForm()" id="showAddButton" class="icon_button">
             <img title="Добавить статью" src="post_add.png" alt="Добавить" />
         </button>
         <button id="openModalButton" class="icon_button">
