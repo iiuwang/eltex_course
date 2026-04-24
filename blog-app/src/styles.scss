@@ -1,0 +1,63 @@
+// styles.scss (глобальный файл стилей)
+:root{
+    --text:#323743;
+    --logo:#1A1B20;
+    --footer:#1E2128;
+    --textMenu:#68686A;
+    --green:#61C15C;
+    --light_green:#F4FBF4;
+    --line: #BDC1CA;
+    --orange:#DB5E31;
+    --light_orange:#FEF3EF;
+    --light_text:#FDFEFF;
+    --post_card:#FAFAFA;
+}
+
+* {
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+} 
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto; 
+    // margin-left: 132px;
+    // margin-right: 133px;
+}
+
+body{
+    
+    margin:0;
+}
+
+p{
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 400;
+}
+h1{
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--text);
+}
+h2{
+    font-size: 40px;
+    font-weight: 700;
+}
+h3{
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text);
+}
+h4{
+    font-size: 24px;
+    font-weight: 400;
+}
+p{
+    font-size: 16px;
+    font-weight: 400;
+}

@@ -1,0 +1,68 @@
+
+<main>
+    <div class="container">
+        <section class="about_blog">
+            <div>
+                <h1>Мой блог</h1>
+                <p>Здесь вы найдёте статьи о программировании, дизайне, адаптивной верстке и практических лайфхаках для создания современных сайтов и приложений.
+                </p>
+            </div>
+            <img src="1.png" />
+        </section>
+        <div class="post_container">
+            <div class="loader" id="loader"></div>
+            <div class="empty" id="empty">
+                <p>Нет статей</p>
+            </div>
+            <section class="posts_card">
+                @for (post of posts; track post.title;let i = $index){
+                    <app-blog-post
+                      [title]="post.title"
+                      [description]="post.description"
+                      [date]="post.date"
+                      [image]="post.image"
+                      [index]="i"></app-blog-post>
+                }
+                
+                    
+            </section>
+        </div>
+        <div class="button_next">
+            <button type="button">Далее</button>
+        </div>
+
+       <!-- блок создать статью -->
+        @if(addFormVisible){
+            <app-form-add-post></app-form-add-post>
+        }
+        
+    </div>
+    
+    <div class="admin_tools"> 
+        <button (click)="switchForm()" id="showAddButton" class="icon_button">
+            <img title="Добавить статью" src="post_add.png" alt="Добавить" />
+        </button>
+        <button id="openModalButton" class="icon_button">
+            <img title="Статистика" src="statistics.png" alt="Статистика">
+        </button>
+
+    </div>
+
+        <!-- диалоговое окно -->
+    <dialog aria-label="statistics_dialog" id="statistics_dialog">
+            <h3>Статистика страницы</h3>
+            <div class="stats_blocks">
+                <div class="total_posts">
+                    <h4>Всего статей:</h4>
+                    <p id="post_count">0</p>
+                </div>
+                <div class="total_comments">
+                    <h4>Комментарии:</h4>
+                    <p>0</p>
+                </div>
+            </div>
+    </dialog>
+    <!-- работа со статистикой -->
+    <!-- <script  type="module" src="scripts/statistics.js"></script>
+    <script type="module" src="scripts/entities/blog.js"></script> -->
+</main>

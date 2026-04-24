@@ -1,0 +1,70 @@
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 300px;
+}
+.footer{
+    background-color: var(--footer);
+    display: flex;
+    justify-content: space-between;
+}
+.footer h1,.footer p{
+    color:  var(--light_text);
+}
+.footer a{
+    text-decoration: none;
+    color: var(--light_text);
+}
+.footer section {
+    flex: 1; 
+}
+
+.footer input,
+.footer textarea {
+    background-color: transparent;
+    border: 1px solid var(--light_text); 
+    color: var(--light_text); 
+    padding: 8px;
+    width: 589px;
+    border-radius: 5px;
+}
+
+.footer input::placeholder {
+    color: var(--light_text); 
+}
+.footer textarea::placeholder {
+    color: var(--light_text);
+}
+.footer label {
+    color: var(--light_text);
+    font-size: 18px;
+    margin-top: 45px;
+    margin-bottom: 3px;
+    display: block; 
+}
+
+.footer textarea {
+    width: 589px;
+    height: 148px;
+    resize: none;
+    border-radius: 5px;
+}
+.footer button {
+    background-color: var(--green);
+    color: var(--light_text);
+    padding: 8px 16px 8px 16px;
+    border-radius: 5px;
+    margin-bottom: 49px;
+    margin-top:24px;
+    width: 148px;
+    height: 85;
+    border: none;
+}
+.footer_bottom{
+    color: var(--light_text);
+    margin-bottom: 16px;
+    margin-top: 86px;
+}
+.links{
+    margin-top: 28px;
+}

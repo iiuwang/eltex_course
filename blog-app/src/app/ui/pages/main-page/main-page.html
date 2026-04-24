@@ -1,0 +1,98 @@
+<main>
+        <div class="container">
+            <section class="about_me">
+            <!-- блок обо мне -->
+                <div>
+                    <h1>Добро пожаловать! Меня зовут Алена</h1>
+                    <p>Я изучаю веб-программирование и постепенно осваиваю создание интерактивных сайтов и приложений.
+                        В этом блоге я делюсь своими учебными проектами, практическими наработками и интересными материалами, которые помогают лучше понимать мир веб-разработки.
+                    </p>
+                    <a href="#more_about">Больше обо мне ></a>
+                </div>
+                <img src="pic1.jpg" alt="Моё фото" />
+            </section>
+
+            <!-- блок последние статьи -->
+            <section class="posts">
+                    @for (post of posts; track post.date; let i=$index){
+                        <app-main-post
+                            [post]="post"
+                            [index]="i">
+                        </app-main-post>
+                        
+                    }
+
+                
+
+                <div class="button_posts">
+                    <a routerLink="/blog-page">Посмотреть все статьи</a>
+                </div>
+                
+            </section>
+            
+            <!-- блок навыки -->
+            <section class="skills">
+                <h1>Навыки:</h1>
+                <ul class="skill_item">
+                    <li>HTML5</li>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>CSS</li>
+                    <li>R</li>
+                    <li>C++</li>
+                </ul>
+            </section>
+
+            <section class="more_about" id="more_about">
+                <article>
+                    <h1>Моя карьера</h1>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolore quisquam assumenda asperiores.</p>
+                </article>
+                <div id="right_col">
+                    <article class="works">
+                        <div class="work_img"><img src="work_icon1.png" alt="Иконка" /></div>
+                        <div class="work_text">
+                            <p class="company">ООО "CORTEL" - (2025 - по настоящее время)</p>
+                            <p class="job_name" >Оператор технической поддержки</p>
+                            <p class="job_description">Круглосуточный мониторинг IT-инфраструктуры и облачных сервисов, оперативная обработка и первичная диагностика инцидентов, взаимодействие с техническими специалистами и сопровождение инцидентов до их полного устранения</p>
+                        </div>
+                    </article>
+                    <article class="works">
+                        <div class="work_img"><img src="work_icon2.png" alt="Иконка" /></div>
+                        <div class="work_text">
+                            <p class="company">ООО "Алгоритмика" (2024 - 2025)</p>
+                            <p class="job_name">Преподаватель</p>
+                            <p class="job_description">Обучение школьников языку программирования Python и Scratch</p>
+                        </div>
+                    </article> 
+                </div>
+            </section>
+            <section class="hobby">
+                <div class="hobby_text">
+                    <h1>Мои хобби</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dolore quisquam assumenda asperiores.</p>
+                </div>
+                <div class="hobby_pics">
+                    <div class = "pic_item">
+                        <img  src="hobby1.png" alt="Фото хобби" />
+                        <div class="overlay">
+                            <h4>Hobby project name</h4>
+                            <p>
+                                Duis nisi do exercitation in irure aliqua commodo nisi eu id reprehenderit dolore fugiat consectetur irure labore est ea.
+                            </p>
+                        </div>
+                    </div>
+                    <div class = "pic_item">
+                        <img  src="hobby2.png" alt="Фото хобби" />
+                    </div>
+                    <div class = "pic_item">
+                        <img class = "pic_item" src="selection.png" alt="Фото хобби" />
+                    </div>
+                    <div class = "pic_item">
+                        <img class = "pic_item" src="selection.png" alt="Фото хобби" />
+                    </div>
+                    
+                </div>
+            </section>
+        </div>
+    </main>
