@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BlogPost } from '../../components/blog-post/blog-post';
 import { FormAddPost } from "../../components/form-add-post/form-add-post";
+import { Post } from '../../../types/post';
 
 @Component({
   selector: 'app-blog-page',
@@ -11,13 +12,8 @@ import { FormAddPost } from "../../components/form-add-post/form-add-post";
   standalone: true,
 })
 export class BlogPage { 
-  // попытка сделать условное отображенние формы
-  addFormVisible = false;
-  switchForm() {
-    this.addFormVisible = !this.addFormVisible;
-  }
 
-  posts = [
+  protected posts: Post[] = [
   {
     title: 'Статья 1',
     description: 'Описание статьи 1',
@@ -37,4 +33,11 @@ export class BlogPage {
     image: 'selection.png'
   }
   ];
+  
+  // попытка сделать условное отображенние формы
+  protected addFormVisible = false;
+  protected switchForm() {
+    this.addFormVisible = !this.addFormVisible;
+  }
+
 }

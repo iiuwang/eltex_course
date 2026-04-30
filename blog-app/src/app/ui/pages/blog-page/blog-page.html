@@ -16,15 +16,9 @@
             </div>
             <section class="posts_card">
                 @for (post of posts; track post.title;let i = $index){
-                    <app-blog-post
-                      [title]="post.title"
-                      [description]="post.description"
-                      [date]="post.date"
-                      [image]="post.image"
-                      [index]="i"></app-blog-post>
-                }
-                
-                    
+                    <app-blog-post  
+                      [post]="post"></app-blog-post>
+                }  
             </section>
         </div>
         <div class="button_next">

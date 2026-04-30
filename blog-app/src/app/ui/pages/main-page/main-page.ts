@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MainPost } from '../../components/main-post/main-post';
 import { RouterLink } from "@angular/router";
+import { Post } from '../../../types/post';
 
 @Component({
   selector: 'app-main-page',
@@ -13,7 +14,7 @@ import { RouterLink } from "@angular/router";
 
 
 export class MainPage { 
-    posts = [
+    protected posts: Post[] = [
       {
         title: 'Как создать адаптивный дизайн за 30 минут',
         description: 'В этой статье я расскажу о ключевых принципах создания мобильных интерфейсов, которые одинаково хорошо выглядят на всех устройствах. Вы узнаете о медиа-запросах, гибких сетках и практических примерах кода, которые можно использовать прямо сейчас.',

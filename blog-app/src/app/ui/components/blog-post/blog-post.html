@@ -1,11 +1,11 @@
-    <article class="card_item" [class.first]="index === 0">
-        <img [src]="image" alt="Обложка" />
+    <article class="card_item">
+        <img [src]="post.image" alt="Обложка" />
         <button class="hover_delete">
             <img src="delete.png" alt="Иконка удаления" />
         </button> 
         <div class="card_text">
-            <h4 class="blog-article-title">{{ title }}</h4>
-            <p class="blog-article-description">{{ description }}</p>
-            <p class="date_post">{{ date }}</p>
+            <h4 class="blog-article-title">{{ post.title }}</h4>
+            <p class="blog-article-description">{{ post.description }}</p>
+            <p class="date_post">{{ post.date }}</p>
         </div> 
     </article>
