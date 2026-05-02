@@ -1,8 +1,11 @@
     <article class="card_item">
         <img [src]="post.image" alt="Обложка" />
-        <button class="hover_delete">
+        <button class="hover_delete" (click)="deletePost.emit(post.id)">
             <img src="delete.png" alt="Иконка удаления" />
         </button> 
+        <button class="hover_edit" (click)="editPost.emit(post)">
+            <img src="edit.png" alt="Иконка редактирования" />
+        </button>
         <div class="card_text">
             <h4 class="blog-article-title">{{ post.title }}</h4>
             <p class="blog-article-description">{{ post.description }}</p>

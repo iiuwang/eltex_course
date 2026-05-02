@@ -1,19 +1,51 @@
 <section class=add_post id="add_post">
         <!-- блок создать статью -->
-            <h3>Добавить статью</h3>
-            <form class="create_post">
+            <h3>{{ editPost() ? 'Редактирование статьи' : 'Добавить статью' }}</h3>
+            <form 
+                class="create_post"
+                [formGroup]="form"
+                (ngSubmit)="onSubmit()"
+            >
                 <div>
                     <label for="name_post">Заголовок</label>
-                    <input id="name_post" class="name_post" name="name_post" type="text" placeholder="Заголовок статьи" required>
+                    <input 
+                        id="name_post"
+                        class="name_post"
+                        type="text"
+                        formControlName="title"
+                        placeholder="Заголовок статьи" required
+                        [class.invalid]="form.get('title')?.invalid && form.get('title')?.touched"
+                    >
+                    @if(form.get('title')?.invalid && form.get('title')?.touched){
+                        <div class="error-messages">
+                            @if (form.get('title')?.errors?.['required']){
+                                <span class="error">Заполните данное поле</span>
+                            }
+                            @if (form.get('title')?.errors?.['minlength']){
+                                <span class="error">Минимальная длина заголовка 25 символов</span>
+                            }
+                        </div>
+                    }
+
                 </div>
                 <div>
                     <label for="text_post">Текст статьи</label>
-                    <textarea id="text_post" name="text_post" class=text_post placeholder="Текст статьи" required></textarea> 
+                    <textarea 
+                        id="text_post" 
+                        class="text_post"
+                        formControlName="description" 
+                        placeholder="Текст статьи"
+                        [class.invalid]="form.get('description')?.invalid && form.get('description')?.touched"
+                    >
+                    </textarea>
+                    @if (form.get('description')?.invalid && form.get('description')?.touched){
+                        <span class="error">Заполните данное поле</span>
+                    }
                         
                 </div>
                 <div>
-                    <button id="add_button" class="add_button" type="submit">Добавить</button>
-                    <button id="del_button" class="del_button" type="button">Отменить</button>
+                    <button id="add_button" class="add_button" type="submit" [disabled]="form.invalid">{{ editPost() ? 'Сохранить' : 'Добавить' }}</button>
+                    <button id="del_button" class="del_button" type="button" (click)="onCancel()">Отменить</button>
                 </div>
             </form>
                 

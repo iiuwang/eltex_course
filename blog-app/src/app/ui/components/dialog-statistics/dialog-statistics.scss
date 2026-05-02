@@ -1,0 +1,33 @@
+/* диалоговое окно*/
+
+dialog{
+    border-radius: 10px;
+    width: 516px;
+    border: 1px solid var(--textMenu);
+}
+dialog h3{
+    margin-top: 0px;
+    margin-bottom: 16px;
+}
+.stats_blocks{
+    display: flex;
+    gap:26px;
+}
+.total_posts, .total_comments{
+    box-shadow: 5px 5px 5px var(--textMenu);
+    border-radius: 10px;
+    flex: 1;
+    padding-top: 12px;
+    padding-left: 16px;
+    padding-bottom: 12px;
+    padding-right: 16px;
+}
+
+.total_posts h4, .total_comments h4, .total_posts p, .total_comments p{
+    color: var(--text);
+    margin: 0px;
+}
+.total_comments p, .total_posts p{
+    font-size: 40px;
+    font-weight: bold;
+}
