@@ -11,21 +11,25 @@
         </section>
         <div class="post_container">
             <div class="loader" id="loader"></div>
-            <div class="empty" id="empty">
-                <p>Нет статей</p>
-            </div>
-            <section class="posts_card">
-                @for (post of posts; track post.title;let i = $index){
-                    <app-blog-post
-                      [title]="post.title"
-                      [description]="post.description"
-                      [date]="post.date"
-                      [image]="post.image"
-                      [index]="i"></app-blog-post>
-                }
-                
-                    
+            @if (posts.length === 0){
+                <div class="empty" id="empty">
+                    <p>Нет статей</p>
+                </div>
+            } @else {
+                    <section class="posts_card">
+                        @for (post of posts; track post.id;){
+                            <app-blog-post  
+                                [post]="post"
+                                (deletePost)="onDeletePost($event)"
+                                (editPost)="onEditPost($event)"
+                                
+                            >
+                            </app-blog-post>
+                                
+                        }  
             </section>
+            }
+            
         </div>
         <div class="button_next">
             <button type="button">Далее</button>
@@ -33,7 +37,8 @@
 
        <!-- блок создать статью -->
         @if(addFormVisible){
-            <app-form-add-post></app-form-add-post>
+            <app-form-add-post  [editPost]="editingPost" (addPost)="onAddPost($event)" (cancel)="switchForm()" (updatePost)="onUpdatePost($event)"></app-form-add-post>
+            
         }
         
     </div>
@@ -42,27 +47,19 @@
         <button (click)="switchForm()" id="showAddButton" class="icon_button">
             <img title="Добавить статью" src="post_add.png" alt="Добавить" />
         </button>
-        <button id="openModalButton" class="icon_button">
+        <button (click)="switchStatistics()" id="openModalButton" class="icon_button">
             <img title="Статистика" src="statistics.png" alt="Статистика">
         </button>
 
     </div>
-
-        <!-- диалоговое окно -->
-    <dialog aria-label="statistics_dialog" id="statistics_dialog">
-            <h3>Статистика страницы</h3>
-            <div class="stats_blocks">
-                <div class="total_posts">
-                    <h4>Всего статей:</h4>
-                    <p id="post_count">0</p>
-                </div>
-                <div class="total_comments">
-                    <h4>Комментарии:</h4>
-                    <p>0</p>
-                </div>
-            </div>
-    </dialog>
-    <!-- работа со статистикой -->
-    <!-- <script  type="module" src="scripts/statistics.js"></script>
-    <script type="module" src="scripts/entities/blog.js"></script> -->
+    @if(statisticsVisible){
+        <app-dialog-statistics
+            [visible]="statisticsVisible"
+            [postCount]="posts.length"
+            [commentCount]="totalComments"
+            (closed)="switchStatistics()"
+        >
+        </app-dialog-statistics>
+    }
+  
 </main>

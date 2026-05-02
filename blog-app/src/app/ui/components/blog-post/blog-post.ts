@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component,Input } from '@angular/core';
-
+import { ChangeDetectionStrategy, Component,Input, output } from '@angular/core';
+import { Post } from '../../../types/post';
 @Component({
   selector: 'app-blog-post',
   imports: [],
@@ -9,9 +9,7 @@ import { ChangeDetectionStrategy, Component,Input } from '@angular/core';
   standalone: true,
 })
 export class BlogPost {
-  @Input() title: string = "";
-  @Input() description: string = "";
-  @Input() date: string = "";
-  @Input() image: string = "";
-  @Input() index: number=0;
+  @Input() post!: Post;
+  deletePost = output<number>();
+  editPost = output<Post>();
  }

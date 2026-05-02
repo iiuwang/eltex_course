@@ -1,0 +1,14 @@
+<!-- диалоговое окно -->
+        <dialog #dialog aria-label="statistics_dialog" id="statistics_dialog">
+                <h3>Статистика страницы</h3>  
+                <div class="stats_blocks">
+                    <div class="total_posts">
+                        <h4>Всего статей:</h4>
+                        <p>{{postCount()}}</p>
+                    </div>
+                    <div class="total_comments">
+                        <h4>Комментарии:</h4>
+                        <p>{{commentCount()}}</p>
+                    </div>
+                </div>
+        </dialog>

@@ -1,6 +1,7 @@
 .create_post{
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 .name_post,.text_post{
   width: 100%;
@@ -11,16 +12,38 @@
   font-weight: 200;
   padding-left: 20px;
   padding-top: 20px;
+   
+  transition: border-color 0.3s ease; 
+  &.invalid{
+    border-color: red;
+    border-width: 2px;
+  }
+}
+
+.error-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 4px;
+}
+.error {
+  color: red;
+  font-size: 12px;
+  line-height: 1.4;
 }
 
 .name_post{
   height: 60px;
-  margin-bottom: 20px;
+  
   padding-bottom: 20px;
   border-width:1px;
+  caret-color: black;
 }
 .text_post{
   height: 123px;
+  caret-color: black;
+  
+
 }
 
 .add_button{
@@ -32,6 +55,11 @@
   height: 51px;
   font-size: 18px;
   cursor: pointer;
+  margin-right: 20px;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }
 .del_button{
   background-color: transparent;
