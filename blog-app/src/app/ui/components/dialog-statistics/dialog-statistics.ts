@@ -18,6 +18,7 @@ export class DialogStatistics implements AfterViewInit{
   ngAfterViewInit() {
     this.updateDialog();
   }
+  
   private updateDialog(){
     const dialogElement = this.dialog()?.nativeElement;
     if (!dialogElement){

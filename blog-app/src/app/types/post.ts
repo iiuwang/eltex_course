@@ -5,3 +5,5 @@ export interface Post{
     date: string;
     image: string;
 }
+export type AddPostData = Omit<Post, 'id' | 'date' | 'image'>;
+export type UpdatePostData = Pick<Post, 'id' | 'title' | 'description'>;

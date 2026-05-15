@@ -1,9 +1,9 @@
     <article class="card_item">
         <img [src]="post.image" alt="Обложка" />
-        <button class="hover_delete" (click)="deletePost.emit(post.id)">
+        <button class="hover_delete" (click)="onDelete()">
             <img src="delete.png" alt="Иконка удаления" />
         </button> 
-        <button class="hover_edit" (click)="editPost.emit(post)">
+        <button class="hover_edit" (click)="onEdit()">
             <img src="edit.png" alt="Иконка редактирования" />
         </button>
         <div class="card_text">

@@ -1,0 +1,20 @@
+<section class="hobby">
+    <div class="hobby_text">
+      <h1>{{ title }}</h1>
+      <p>{{ description }}</p>
+    </div>
+  
+    <div class="hobby_pics">
+      @for (hobby of hobbies; track hobby.image; let i = $index) {
+        <div class="pic_item">
+          <img [src]="hobby.image" [alt]="hobby.alt" />
+          @if (hobby.title && hobby.description) {
+            <div class="overlay">
+              <h4>{{ hobby.title }}</h4>
+              <p>{{ hobby.description }}</p>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  </section>

@@ -11,13 +11,13 @@
         </section>
         <div class="post_container">
             <div class="loader" id="loader"></div>
-            @if (posts.length === 0){
+            @if (allPosts().length === 0){
                 <div class="empty" id="empty">
                     <p>Нет статей</p>
                 </div>
             } @else {
                     <section class="posts_card">
-                        @for (post of posts; track post.id;){
+                        @for (post of visiblePosts(); track post.id;){
                             <app-blog-post  
                                 [post]="post"
                                 (deletePost)="onDeletePost($event)"
@@ -31,13 +31,15 @@
             }
             
         </div>
-        <div class="button_next">
-            <button type="button">Далее</button>
-        </div>
+        @if (canLoadMore()) {
+            <div class="button_next">
+                <button type="button" (click)="loadMore()">Далее</button>
+            </div>
+        }
 
        <!-- блок создать статью -->
-        @if(addFormVisible){
-            <app-form-add-post  [editPost]="editingPost" (addPost)="onAddPost($event)" (cancel)="switchForm()" (updatePost)="onUpdatePost($event)"></app-form-add-post>
+        @if (addFormVisible()) {
+            <app-form-add-post  [editPost]="editingPost()" (addPost)="onAddPost($event)" (cancel)="switchForm()" (updatePost)="onUpdatePost($event)"></app-form-add-post>
             
         }
         
@@ -52,10 +54,10 @@
         </button>
 
     </div>
-    @if(statisticsVisible){
+    @if (statisticsVisible()) {
         <app-dialog-statistics
-            [visible]="statisticsVisible"
-            [postCount]="posts.length"
+            [visible]="statisticsVisible()"
+            [postCount]="totalPosts()"
             [commentCount]="totalComments"
             (closed)="switchStatistics()"
         >
