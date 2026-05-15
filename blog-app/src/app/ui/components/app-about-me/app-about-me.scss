@@ -1,0 +1,32 @@
+.about_me{
+  display: flex;
+  height: 655px;
+  margin-bottom: 107px;
+  justify-content: space-between;
+  
+}
+.about_me div{
+  display: flex;           
+  flex-direction: column;  
+  justify-content: center;  
+  height: 100%;
+  justify-content: center; 
+  text-align: left
+  
+}
+.about_me p{
+  color: var(--textMenu);
+  font-size: 15px;
+  max-width: 400px
+}
+.about_me a{
+  color: var(--green);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.about_me img{
+  border-radius: 1px 1px 230px 230px;
+  margin-left: 67px;
+}
+

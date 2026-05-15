@@ -1,0 +1,21 @@
+<section class="more_about" id="more_about">
+    <article>
+      <h1>{{ title }}</h1>
+      <p class="description">{{ description }}</p>
+    </article>
+  
+    <div id="right_col">
+      @for (work of works; track work.company) {
+        <article class="works">
+          <div class="work_img">
+            <img [src]="work.icon" alt="Иконка" />
+          </div>
+          <div class="work_text">
+            <p class="company">{{ work.company }}</p>
+            <p class="job_name">{{ work.jobName }}</p>
+            <p class="job_description">{{ work.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+</section>

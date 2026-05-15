@@ -12,4 +12,12 @@ export class BlogPost {
   @Input() post!: Post;
   deletePost = output<number>();
   editPost = output<Post>();
+
+  protected onDelete(): void {
+    this.deletePost.emit(this.post.id);
+  }
+
+  protected onEdit(): void {
+    this.editPost.emit(this.post);
+  }
  }

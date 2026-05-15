@@ -1,0 +1,29 @@
+.description p{
+  font-size: 21px;
+}  
+
+.more_about .job_name{
+  font-size: 20px;
+}
+.more_about{
+  margin-top: 107px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 107px;
+}
+.more_about > * {
+  flex: 1;
+}
+.works{
+  display: flex;
+  align-items: flex-start;
+
+  border-bottom: 2px solid var(--line);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.work_img{
+  margin-right: 17px;
+  padding-top: 16px;
+}

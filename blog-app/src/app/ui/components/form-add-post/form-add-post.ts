@@ -1,17 +1,24 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormControl, FormGroup, Validators,AbstractControl,ValidationErrors } from '@angular/forms';
-import { output, input, OnChanges, SimpleChanges } from '@angular/core';
-import { Post } from '../../../types/post';
+import { output,computed, input, OnChanges, SimpleChanges } from '@angular/core';
+import { Post, AddPostData, UpdatePostData } from '../../../types/post';
+
 
 
 //проверим строку (вдруг там одни пробелы)
 function notEmptyString(control: AbstractControl): ValidationErrors | null {
   const value = control.value;
+
   if (!value || value.trim().length === 0) {
     return { required: true };  
   }
   return null;
+}
+
+interface MinLengthValidationInfo {
+  requiredLength: number;
+  actualLength: number;
 }
 
 
@@ -25,16 +32,64 @@ function notEmptyString(control: AbstractControl): ValidationErrors | null {
   styleUrl: './form-add-post.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormAddPost { 
+export class FormAddPost implements OnChanges{ 
   editPost=input<Post| null>(null);
 
-  public addPost = output<Omit<Post,'id'| 'date' | 'image'>>();
-  public updatePost = output<{ id: number; title: string; description: string }>();
+  protected isEditMode=computed(() => !!this.editPost());
+
+  protected formTitle = computed(() =>
+    this.isEditMode() ? 'Редактирование статьи' : 'Добавить статью'
+  );
+
+  protected saveButtonlabel = computed(() =>
+    this.isEditMode() ? 'Сохранить' : 'Добавить'
+  );
+
+  public addPost = output<AddPostData>();
+  public updatePost = output<UpdatePostData>();
   public cancel = output<void>();
-  form = new FormGroup({
+
+  protected form = new FormGroup({
     title: new FormControl('',[notEmptyString, Validators.minLength(25)]),
     description: new FormControl('',notEmptyString)
   })
+
+  protected hasError(controlName: string): boolean {
+    const control = this.form.get(controlName);
+    const isInvalid = control?.invalid && control.touched;
+    return Boolean(isInvalid);
+  }
+
+  private getErrorStr(errorCode: string, errorData: unknown): string {
+    switch (errorCode) {
+      case 'required':
+        return 'Заполните данное поле';
+  
+      case 'minlength': {
+        const { requiredLength, actualLength } = errorData as MinLengthValidationInfo;
+        return `Минимальная длина заголовка ${requiredLength} символов`;
+      }
+
+      default:
+        return 'Ошибка при заполнении поля';
+    }
+  }
+
+  protected getControlErrors(controlName: string): string[] {
+    const control = this.form.get(controlName);
+    const errors: Record<string, unknown> | null = control?.errors ?? null;
+  
+    if (!errors) {
+      return [];
+    }
+
+    const errorTextArray: string[] = [];
+  
+    Object.entries(errors).forEach(([errorKey, errorValue]) => {
+      errorTextArray.push(this.getErrorStr(errorKey, errorValue));
+    });
+    return errorTextArray;
+  }
 
   ngOnChanges(changes: SimpleChanges){
     if (changes['editPost'] && this.editPost()) {
@@ -47,9 +102,10 @@ export class FormAddPost {
       }
     }
   }
-  protected isEditMode(): boolean {
-    return !!this.editPost();
-  }
+
+  // protected isEditMode(): boolean {
+  //   return !!this.editPost();
+  // }
 
   protected onSubmit(){
     if(this.form.invalid){
@@ -72,6 +128,7 @@ export class FormAddPost {
     } 
     this.form.reset();
   }
+  
   protected onCancel() {
     this.form.reset();      
     this.cancel.emit();     

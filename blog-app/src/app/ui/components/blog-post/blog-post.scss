@@ -45,6 +45,13 @@
   overflow-wrap: break-word;
   white-space: normal;
 }
+.blog-article-title{
+  display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	overflow: hidden;
+}
 .card_item{
   position: relative;
   height: 100%;
@@ -95,7 +102,7 @@
 .card_item{
   display: flex;
   flex-direction: column; 
-  margin-bottom: 60px;
+  
     
 }
 .card_item  img{
@@ -110,6 +117,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: space-between;
 }
 .card_item .card_text p:last-child {
   margin-top: auto;
