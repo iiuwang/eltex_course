@@ -1,5 +1,5 @@
 export interface Post{
-    id: number;
+    id: string;
     title: string;
     description: string;
     date: string;
@@ -7,11 +7,17 @@ export interface Post{
     rating: number;
     comments: Comment[];
 }
-export type AddPostData = Omit<Post, 'id' | 'date' | 'image' | 'rating' | 'comments'>;
-export type UpdatePostData = Pick<Post, 'id' | 'title' | 'description'>;
+
+export type AddPostData = Pick<Post, 'title' | 'description'> & {
+    imageFile?: File | null;
+  };
+  
+  export type UpdatePostData = Pick<Post, 'id' | 'title' | 'description'> & {
+    imageFile?: File | null;
+  };
 
 export interface Comment {
-    id: number;
+    id: string;
     author: string;
     text: string;
     date: string;

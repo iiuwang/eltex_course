@@ -17,7 +17,7 @@ export class ArticlesServiceImpl implements IArticlesService {
         if (posts.length > 0 && posts[0].id === undefined) {
           posts = posts.map((p, index) => ({
             ...p,
-            id: index + 1,
+            id: String(index + 1),
           }));
           this.writeAll(posts);
         }
@@ -45,7 +45,7 @@ export class ArticlesServiceImpl implements IArticlesService {
     addArticle(data: AddPostData, page: number): Observable<IArticlesResult> {
         const all = this.readAll();
         const newPost: Post = {
-          id: Date.now(),
+          id: String(Date.now()),
           title: data.title,
           description: data.description,
           date: new Date().toLocaleDateString('ru-RU'),
@@ -69,7 +69,7 @@ export class ArticlesServiceImpl implements IArticlesService {
         return of(this.toResult(updated, page));
     }
 
-    deleteArticle(id: number, page: number): Observable<IArticlesResult> {
+    deleteArticle(id: string, page: number): Observable<IArticlesResult> {
         const all = this.readAll();
         const updated = all.filter((post) => post.id !== id);
         this.writeAll(updated);

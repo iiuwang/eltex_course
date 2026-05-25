@@ -50,9 +50,18 @@ export class FormAddPost implements OnChanges{
   public cancel = output<void>();
 
   protected form = new FormGroup({
-    title: new FormControl('',[notEmptyString, Validators.minLength(25)]),
-    description: new FormControl('',notEmptyString)
-  })
+    title: new FormControl('', [notEmptyString, Validators.minLength(25)]),
+    description: new FormControl('', notEmptyString),
+    imageFile: new FormControl<File | null>(null),
+  });
+
+  protected onImageSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0] ?? null;
+    this.form.patchValue({
+      imageFile: file,
+    });
+  }
 
   protected hasError(controlName: string): boolean {
     const control = this.form.get(controlName);
@@ -103,9 +112,6 @@ export class FormAddPost implements OnChanges{
     }
   }
 
-  // protected isEditMode(): boolean {
-  //   return !!this.editPost();
-  // }
 
   protected onSubmit(){
     if(this.form.invalid){
@@ -114,18 +120,20 @@ export class FormAddPost implements OnChanges{
     }
     const data = this.form.getRawValue();
 
-    if(this.isEditMode()){
+    if (this.isEditMode()) {
       this.updatePost.emit({
         id: this.editPost()!.id,
         title: String(data.title),
-        description: String(data.description)
+        description: String(data.description),
+        imageFile: data.imageFile,
       });
-    } else{
+    } else {
       this.addPost.emit({
         title: String(data.title),
-        description: String(data.description)
+        description: String(data.description),
+        imageFile: data.imageFile,
       });
-    } 
+    }
     this.form.reset();
   }
   

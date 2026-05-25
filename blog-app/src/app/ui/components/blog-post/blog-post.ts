@@ -13,7 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class BlogPost {
   @Input() post!: Post;
-  deletePost = output<number>();
+  deletePost = output<string>();
   editPost = output<Post>();
 
   protected onDelete(): void {
