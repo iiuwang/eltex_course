@@ -31,10 +31,12 @@ export class ArticlesServiceImpl implements IArticlesService {
 
     private toResult(all: Post[], page: number): IArticlesResult {
         const limit = page * PAGE_SIZE;
+        const loadedPosts = all.slice(0, limit);
+
         return {
-          items: all.slice(0, limit),
+          items: loadedPosts,
           total: all.length,
-          allPosts: all,
+          allPosts: loadedPosts,
         };
     }
 
