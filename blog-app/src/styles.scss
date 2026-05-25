@@ -1,63 +1,102 @@
-// styles.scss (глобальный файл стилей)
-:root{
-    --text:#323743;
-    --logo:#1A1B20;
-    --footer:#1E2128;
-    --textMenu:#68686A;
-    --green:#61C15C;
-    --light_green:#F4FBF4;
-    --line: #BDC1CA;
-    --orange:#DB5E31;
-    --light_orange:#FEF3EF;
-    --light_text:#FDFEFF;
-    --post_card:#FAFAFA;
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+    height: 100%;
+    @include mat.theme(
+        (
+            color: (
+                primary: mat.$azure-palette,
+                tertiary: mat.$blue-palette,
+            ),
+            typography: Roboto,
+            density: 0,
+        )
+    );
+}
+
+body {
+
+    color-scheme: light;
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-body-medium);
+    margin: 0;
+    height: 100%;
+}
+
+:root {
+    --text: #323743;
+    --logo: #1a1b20;
+    --footer: #1e2128;
+    --textMenu: #68686a;
+    --green: #61c15c;
+    --light_green: #f4fbf4;
+    --line: #bdc1ca;
+    --orange: #db5e31;
+    --light_orange: #fef3ef;
+    --light_text: #fdfeff;
+    --post_card: #fafafa;
 }
 
 * {
-    font-family: "Inter", sans-serif;
+    font-family: 'Inter', sans-serif;
     box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
-} 
+    scroll-behavior: smooth;
+}
 
 .container {
-	max-width: 1200px;
-	margin: 0 auto; 
+    max-width: 1200px;
+    margin: 0 auto;
     // margin-left: 132px;
     // margin-right: 133px;
 }
 
-body{
-    
-    margin:0;
+body {
+    margin: 0;
 }
 
-p{
+p {
     color: var(--text);
     font-size: 16px;
     font-weight: 400;
 }
-h1{
-    font-size: 52px;
-    font-weight: 700;
-    color: var(--text);
+h1,
+.mat-typography h1 {
+  font-size: 52px;
+  line-height: 1.15;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
 }
-h2{
-    font-size: 40px;
-    font-weight: 700;
+h2,
+.mat-typography h2 {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--text);
 }
-h3{
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--text);
+h3,
+.mat-typography h3 {
+  font-size: 32px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--text);
 }
-h4{
-    font-size: 24px;
-    font-weight: 400;
+h4,
+.mat-typography h4 {
+  font-size: 24px;
+  line-height: 1.3;
+  font-weight: 400;
+  color: var(--text);
 }
-p{
+p {
     font-size: 16px;
     font-weight: 400;
 }

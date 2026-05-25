@@ -1,0 +1,111 @@
+<main>
+    <div class="container">
+      <a routerLink="/blog-page" class="back-link">Назад к статьям</a>
+  
+      @if (post(); as currentPost) {
+        <article class="post-card">
+          <img class="post-image" src="selection.png" alt="Заглушка изображения статьи" />
+  
+          <div class="post-info">
+            <h1>{{ currentPost.title }}</h1>
+            <p>{{ currentPost.description }}</p>
+            <p class="post-date">{{ currentPost.date }}</p>
+  
+            <div class="rating">
+              <span class="rating-label">Рейтинг статьи:</span>
+              <button mat-icon-button type="button" (click)="increasePostRating()" aria-label="Увеличить рейтинг статьи">
+                <mat-icon>thumb_up</mat-icon>
+              </button>
+              <span>{{ currentPost.rating }}</span>
+              <button mat-icon-button type="button" (click)="decreasePostRating()" aria-label="Уменьшить рейтинг статьи">
+                <mat-icon>thumb_down</mat-icon>
+              </button>
+            </div>
+          </div>
+        </article>
+  
+        <section class="comments">
+          <h3>Комментарии</h3>
+  
+          @if (comments().length === 0) {
+            <p>Комментариев пока нет</p>
+          } @else {
+            @for (comment of comments(); track comment.id) {
+                <mat-card class="comment-card" appearance="outlined">
+                    <mat-card-header>
+                      <mat-card-title>{{ comment.author }}</mat-card-title>
+                      <mat-card-subtitle>{{ comment.date }}</mat-card-subtitle>
+                    </mat-card-header>
+                  
+                    <mat-card-content>
+                      <p>{{ comment.text }}</p>
+                    </mat-card-content>
+                  
+                    <mat-card-actions align="end">
+                      <div class="rating">
+                        <button mat-icon-button type="button" (click)="increaseCommentRating(comment.id)" aria-label="Увеличить рейтинг комментария">
+                          <mat-icon>thumb_up</mat-icon>
+                        </button>
+                  
+                        <span>{{ comment.rating }}</span>
+                  
+                        <button mat-icon-button type="button" (click)="decreaseCommentRating(comment.id)" aria-label="Уменьшить рейтинг комментария">
+                          <mat-icon>thumb_down</mat-icon>
+                        </button>
+                      </div>
+                    </mat-card-actions>
+                  </mat-card>
+            }
+          }
+        </section>
+  
+        <section class="add_post">
+            <h3>Добавить комментарий</h3>
+          
+            <form class="create_post" (submit)="$event.preventDefault(); addComment()">
+                <mat-form-field appearance="outline" class="comment-field">
+                    <mat-label>Имя</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      placeholder="Имя"
+                      [ngModel]="author()"
+                      (ngModelChange)="author.set($event)"
+                      name="author"
+                    />
+                </mat-form-field>
+          
+                <mat-form-field appearance="outline" class="comment-field">
+                    <mat-label>Текст комментария</mat-label>
+                    <textarea
+                      matInput
+                      placeholder="Текст комментария"
+                      [ngModel]="text()"
+                      (ngModelChange)="text.set($event)"
+                      name="text"
+                      rows="5"
+                    ></textarea>
+                </mat-form-field>
+          
+                <div class="comment-actions">
+                    <button
+                      mat-raised-button
+                      color="primary"
+                      type="submit"
+                      [disabled]="!author().trim() || !text().trim()">
+                      <mat-icon>send</mat-icon>
+                      Отправить
+                    </button>
+                  
+                    <button mat-stroked-button type="button" (click)="cancelComment()">
+                      <mat-icon>close</mat-icon>
+                      Отменить
+                    </button>
+                  </div>
+            </form>
+          </section>
+      } @else {
+        <p>Пост не найден</p>
+      }
+    </div>
+  </main>

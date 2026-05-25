@@ -102,7 +102,7 @@
 .card_item{
   display: flex;
   flex-direction: column; 
-  
+  cursor: pointer;
     
 }
 .card_item  img{
@@ -126,6 +126,11 @@
 .card_text h4{
   margin-top: 8px;
   margin-bottom: 21px;
+}
+
+.hover_delete mat-icon,
+.hover_edit mat-icon {
+  color: var(--green);
 }
 
 @media (max-width: 800px) {
