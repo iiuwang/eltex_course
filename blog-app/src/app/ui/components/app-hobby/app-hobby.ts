@@ -8,7 +8,6 @@ import { HobbyItem } from '../../../types/main-page';
   styleUrl: './app-hobby.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class AppHobby {
   @Input({ required: true }) title!: string;
   @Input({ required: true }) description!: string;

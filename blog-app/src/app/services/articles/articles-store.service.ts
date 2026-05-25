@@ -4,7 +4,6 @@ import { Post } from "../../types/post";
 @Injectable({
     providedIn: 'root',
   })
-
 export class ArticlesStoreService {
     readonly posts = signal<Post[]>([]);
     readonly activePage = signal(1);

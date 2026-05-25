@@ -5,10 +5,11 @@ import { Post, UpdatePostData, AddPostData } from '../../../types/post';
 import { DialogStatistics } from '../../components/dialog-statistics/dialog-statistics';
 import { ArticlesStoreService } from '../../../services/articles/articles-store.service';
 import { ARTICLES_SERVICE } from '../../../services/articles/articles-service.token';
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-blog-page',
-  imports: [BlogPost, FormAddPost, DialogStatistics],
+  imports: [BlogPost, FormAddPost, DialogStatistics, MatIconModule, MatButtonModule],
   templateUrl: './blog-page.html',
   styleUrl: './blog-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -96,7 +97,9 @@ export class BlogPage implements OnInit {
   }
 
   protected get totalComments(): number {
-    return 0;
+    return this.store.posts().reduce((total, post) => {
+      return total + (post.comments?.length ?? 0);
+    }, 0);
   }
 
   protected switchStatistics() {

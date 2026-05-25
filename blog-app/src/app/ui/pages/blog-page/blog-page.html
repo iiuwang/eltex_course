@@ -46,13 +46,26 @@
     </div>
     
     <div class="admin_tools"> 
-        <button (click)="switchForm()" id="showAddButton" class="icon_button">
-            <img title="Добавить статью" src="post_add.png" alt="Добавить" />
+        <button
+            mat-icon-button
+            type="button"
+            (click)="switchForm()"
+            id="showAddButton"
+            class="icon_button"
+            aria-label="Добавить статью"
+            title="Добавить статью">
+            <mat-icon>add_box</mat-icon>
         </button>
-        <button (click)="switchStatistics()" id="openModalButton" class="icon_button">
-            <img title="Статистика" src="statistics.png" alt="Статистика">
+        <button
+            mat-icon-button
+            type="button"
+            (click)="switchStatistics()"
+            id="openModalButton"
+            class="icon_button"
+            aria-label="Статистика"
+            title="Статистика">
+            <mat-icon>query_stats</mat-icon>
         </button>
-
     </div>
     @if (statisticsVisible()) {
         <app-dialog-statistics

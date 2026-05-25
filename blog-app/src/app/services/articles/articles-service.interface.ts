@@ -1,16 +1,10 @@
 import {Observable} from 'rxjs';
-import {AddPostData, UpdatePostData, Post} from '../../types/post';
+import {AddPostData, UpdatePostData} from '../../types/post';
+import { IArticlesResult } from '../../types/interfaces/i-articles-result.interface';
 
-export interface ArticlesResult {
-    items: Post[];
-    total: number;
-    allPosts: Post[];
-
-}
-
-export interface ArticlesService {
-    getArticles(page: number): Observable<ArticlesResult>;
-    addArticle(data: AddPostData, page: number): Observable<ArticlesResult>;
-    updateArticle(data: UpdatePostData, page: number): Observable<ArticlesResult>;
-    deleteArticle(id: number, page: number): Observable<ArticlesResult>;
+export interface IArticlesService {
+    getArticles(page: number): Observable<IArticlesResult>;
+    addArticle(data: AddPostData, page: number): Observable<IArticlesResult>;
+    updateArticle(data: UpdatePostData, page: number): Observable<IArticlesResult>;
+    deleteArticle(id: number, page: number): Observable<IArticlesResult>;
 }

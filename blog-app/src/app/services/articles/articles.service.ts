@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Observable,of } from "rxjs";
-import{ArticlesResult,ArticlesService} from "./articles-service.interface";
+import{IArticlesService} from "./articles-service.interface";
 import {Post,AddPostData,UpdatePostData} from "../../types/post";
-
+import { IArticlesResult } from "../../types/interfaces/i-articles-result.interface";
 const STORAGE_KEY = 'blog_posts';
 const PAGE_SIZE = 7;
 
 @Injectable()
-export class ArticlesServiceImpl implements ArticlesService {
+export class ArticlesServiceImpl implements IArticlesService {
     private readAll(): Post[] {
         const saved = localStorage.getItem(STORAGE_KEY);
         if (!saved) {
@@ -28,7 +28,7 @@ export class ArticlesServiceImpl implements ArticlesService {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
     }
 
-    private toResult(all: Post[], page: number): ArticlesResult {
+    private toResult(all: Post[], page: number): IArticlesResult {
         const limit = page * PAGE_SIZE;
         return {
           items: all.slice(0, limit),
@@ -37,12 +37,12 @@ export class ArticlesServiceImpl implements ArticlesService {
         };
     }
 
-    getArticles(page: number): Observable<ArticlesResult> {
+    getArticles(page: number): Observable<IArticlesResult> {
         const all = this.readAll();
         return of(this.toResult(all, page));
     }
 
-    addArticle(data: AddPostData, page: number): Observable<ArticlesResult> {
+    addArticle(data: AddPostData, page: number): Observable<IArticlesResult> {
         const all = this.readAll();
         const newPost: Post = {
           id: Date.now(),
@@ -50,13 +50,15 @@ export class ArticlesServiceImpl implements ArticlesService {
           description: data.description,
           date: new Date().toLocaleDateString('ru-RU'),
           image: 'selection.png',
+          rating: 0,
+          comments: [],
         };
         const updated = [newPost, ...all];
         this.writeAll(updated);
         return of(this.toResult(updated, page));
     }
 
-    updateArticle(data: UpdatePostData, page: number): Observable<ArticlesResult> {
+    updateArticle(data: UpdatePostData, page: number): Observable<IArticlesResult> {
         const all = this.readAll();
         const updated = all.map((post) =>
           post.id === data.id
@@ -67,7 +69,7 @@ export class ArticlesServiceImpl implements ArticlesService {
         return of(this.toResult(updated, page));
     }
 
-    deleteArticle(id: number, page: number): Observable<ArticlesResult> {
+    deleteArticle(id: number, page: number): Observable<IArticlesResult> {
         const all = this.readAll();
         const updated = all.filter((post) => post.id !== id);
         this.writeAll(updated);

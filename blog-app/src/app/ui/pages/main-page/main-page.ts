@@ -17,8 +17,6 @@ import { AppHobby } from '../../components/app-hobby/app-hobby';
   styleUrl: './main-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-
 export class MainPage implements OnInit { 
   private readonly store = inject(ArticlesStoreService);
   private readonly articles = inject(ARTICLES_SERVICE);

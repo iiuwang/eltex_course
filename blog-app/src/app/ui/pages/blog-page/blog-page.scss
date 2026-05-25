@@ -125,14 +125,21 @@ app-blog-post:first-child {
     
 
 }
-.admin_tools img{
-  padding-right: 12px;
-  padding-left: 12px;
-}
+// .admin_tools img{
+//   padding-right: 12px;
+//   padding-left: 12px;
+// }
 
 .icon_button{
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+  color: var(--green);
+}
+
+.admin_tools mat-icon {
+  font-size: 26px;
+  width: 26px;
+  height: 26px;
 }
