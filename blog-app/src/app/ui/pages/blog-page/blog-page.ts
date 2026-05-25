@@ -40,7 +40,7 @@ export class BlogPage implements OnInit {
   }
 
   private loadArticlesIfNeeded(): void {
-    if (this.store.posts().length > 0) {
+    if (this.store.posts().length > 0 && this.store.total() > 0) {
       return;
     }
     const page = this.store.activePage();

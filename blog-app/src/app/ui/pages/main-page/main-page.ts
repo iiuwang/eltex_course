@@ -83,6 +83,7 @@ export class MainPage implements OnInit {
     const page = this.store.activePage();
     this.articles.getArticles(page).subscribe((result) => {
       this.store.setPosts(result.allPosts);
+      this.store.setTotal(result.total);
       this.store.setActivePage(page);
     });
   }
