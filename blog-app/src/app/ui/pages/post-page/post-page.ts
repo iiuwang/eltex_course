@@ -24,7 +24,7 @@ export class PostPage implements OnInit {
   private readonly postPageService = inject(PostPageService);
   private readonly postPageStore = inject(PostPageStoreService);
 
-  protected readonly postId = Number(this.route.snapshot.paramMap.get('postId'));
+  protected readonly postId = this.route.snapshot.paramMap.get('postId') ?? '';
 
   protected readonly post = this.postPageStore.post;
   protected readonly comments = this.postPageStore.comments;
@@ -46,11 +46,11 @@ export class PostPage implements OnInit {
     this.updatePostRating(-1);
   }
 
-  protected increaseCommentRating(commentId: number): void {
+  protected increaseCommentRating(commentId: string): void {
     this.updateCommentRating(commentId, 1);
   }
 
-  protected decreaseCommentRating(commentId: number): void {
+  protected decreaseCommentRating(commentId: string): void {
     this.updateCommentRating(commentId, -1);
   }
 
@@ -80,7 +80,7 @@ export class PostPage implements OnInit {
     });
   }
 
-  private updateCommentRating(commentId: number, change: number): void {
+  private updateCommentRating(commentId: string, change: number): void {
     this.postPageService
       .updateCommentRating(this.postId, commentId, change)
       .subscribe((post) => {

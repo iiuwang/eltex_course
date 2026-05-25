@@ -30,10 +30,10 @@ export class BlogPage implements OnInit {
   });
 
   protected readonly canLoadMore = computed(() => {
-    return this.visiblePosts().length < this.store.posts().length;
+    return this.store.posts().length < this.store.total();
   });
 
-  protected readonly totalPosts = computed(() => this.store.posts().length);
+  protected readonly totalPosts = computed(() => this.store.total());
 
   ngOnInit(): void {
     this.loadArticlesIfNeeded();
@@ -46,13 +46,19 @@ export class BlogPage implements OnInit {
     const page = this.store.activePage();
     this.articles.getArticles(page).subscribe((result) => {
       this.store.setPosts(result.allPosts);
+      this.store.setTotal(result.total);
       this.store.setActivePage(page);
     });
   }
 
   protected loadMore(): void {
     const nextPage = this.store.activePage() + 1;
-    this.store.setActivePage(nextPage);
+  
+    this.articles.getArticles(nextPage).subscribe((result) => {
+      this.store.setPosts(result.allPosts);
+      this.store.setTotal(result.total);
+      this.store.setActivePage(nextPage);
+    });
   }
 
 
@@ -72,6 +78,7 @@ export class BlogPage implements OnInit {
     const page = this.store.activePage();
     this.articles.addArticle(data, page).subscribe((result) => {
       this.store.setPosts(result.allPosts);
+      this.store.setTotal(result.total);
       this.addFormVisible.set(false);
     });
   }
@@ -80,15 +87,17 @@ export class BlogPage implements OnInit {
     const page = this.store.activePage();
     this.articles.updateArticle(data, page).subscribe((result) => {
       this.store.setPosts(result.allPosts);
+      this.store.setTotal(result.total);
       this.addFormVisible.set(false);
       this.editingPost.set(null);
     });
   }
 
-  protected onDeletePost(postId: number): void {
+  protected onDeletePost(postId: string): void {
     const page = this.store.activePage();
     this.articles.deleteArticle(postId, page).subscribe((result) => {
       this.store.setPosts(result.allPosts);
+      this.store.setTotal(result.total);
       if (this.editingPost()?.id === postId) {
         this.addFormVisible.set(false);
         this.editingPost.set(null);

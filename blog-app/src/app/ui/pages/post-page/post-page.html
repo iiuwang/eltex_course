@@ -4,7 +4,7 @@
   
       @if (post(); as currentPost) {
         <article class="post-card">
-          <img class="post-image" src="selection.png" alt="Заглушка изображения статьи" />
+          <img class="post-image" [src]="currentPost.image" alt="Изображение статьи" />
   
           <div class="post-info">
             <h1>{{ currentPost.title }}</h1>

@@ -20,6 +20,27 @@
   }
 }
 
+.image_post {
+  width: 100%;
+  color: #A3A6AD;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 200;
+  padding: 16px 20px;
+  cursor: pointer;
+}
+
+.image_post::file-selector-button {
+  background-color: var(--green);
+  color: var(--light_text);
+  border: none;
+  border-radius: 5px;
+  padding: 10px 16px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
 .error-messages {
   display: flex;
   flex-direction: column;

@@ -6,5 +6,5 @@ export interface IArticlesService {
     getArticles(page: number): Observable<IArticlesResult>;
     addArticle(data: AddPostData, page: number): Observable<IArticlesResult>;
     updateArticle(data: UpdatePostData, page: number): Observable<IArticlesResult>;
-    deleteArticle(id: number, page: number): Observable<IArticlesResult>;
+    deleteArticle(id: string, page: number): Observable<IArticlesResult>;
 }
