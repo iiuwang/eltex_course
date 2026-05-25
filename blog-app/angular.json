@@ -84,6 +84,7 @@
                 "deploy": {
                     "builder": "angular-cli-ghpages:deploy",
                     "options": {
+                        "buildTarget": "blog-app:build:production",
                         "name": "iiuwang",
                         "email": "afilippova287@gmail.com"
                     }

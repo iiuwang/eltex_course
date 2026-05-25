@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { Observable,of } from "rxjs";
+import { Observable,from,of } from "rxjs";
+import { map } from "rxjs";
 import{IArticlesService} from "./articles-service.interface";
 import {Post,AddPostData,UpdatePostData} from "../../types/post";
 import { IArticlesResult } from "../../types/interfaces/i-articles-result.interface";
@@ -43,30 +44,38 @@ export class ArticlesServiceImpl implements IArticlesService {
     }
 
     addArticle(data: AddPostData, page: number): Observable<IArticlesResult> {
-        const all = this.readAll();
-        const newPost: Post = {
-          id: String(Date.now()),
-          title: data.title,
-          description: data.description,
-          date: new Date().toLocaleDateString('ru-RU'),
-          image: 'selection.png',
-          rating: 0,
-          comments: [],
-        };
-        const updated = [newPost, ...all];
-        this.writeAll(updated);
-        return of(this.toResult(updated, page));
+        return from(this.fileToBase64(data.imageFile)).pipe(
+          map((image) => {
+            const all = this.readAll();
+            const newPost: Post = {
+              id: String(Date.now()),
+              title: data.title,
+              description: data.description,
+              date: new Date().toLocaleDateString('ru-RU'),
+              image: image ?? 'selection.png',
+              rating: 0,
+              comments: [],
+            };
+            const updated = [newPost, ...all];
+            this.writeAll(updated);
+            return this.toResult(updated, page);
+          }),
+        );
     }
 
     updateArticle(data: UpdatePostData, page: number): Observable<IArticlesResult> {
-        const all = this.readAll();
-        const updated = all.map((post) =>
-          post.id === data.id
-            ? { ...post, title: data.title, description: data.description }
-            : post,
+        return from(this.fileToBase64(data.imageFile)).pipe(
+          map((image) => {
+            const all = this.readAll();
+            const updated = all.map((post) =>
+              post.id === data.id
+                ? { ...post, title: data.title, description: data.description, image: image ?? post.image }
+                : post,
+            );
+            this.writeAll(updated);
+            return this.toResult(updated, page);
+          }),
         );
-        this.writeAll(updated);
-        return of(this.toResult(updated, page));
     }
 
     deleteArticle(id: string, page: number): Observable<IArticlesResult> {
@@ -74,6 +83,20 @@ export class ArticlesServiceImpl implements IArticlesService {
         const updated = all.filter((post) => post.id !== id);
         this.writeAll(updated);
         return of(this.toResult(updated, page));
+    }
+
+    private fileToBase64(file?: File | null): Promise<string | null> {
+        if (!file) {
+          return Promise.resolve(null);
+        }
+
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+
+          reader.onload = () => resolve(String(reader.result));
+          reader.onerror = () => reject(reader.error);
+          reader.readAsDataURL(file);
+        });
     }
 
 }
